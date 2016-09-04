@@ -5,13 +5,14 @@ Configuration SonarQubeDeploy
         [string] $InstallPath = "c:\SonarQube",
         [string] $SonarQubeVersion = "5.6"
     )
+    
     $ArchiveFileName = "sonarqube-$($SonarQubeVersion).zip"
 
     Import-DscResource -ModuleName PSDesiredStateConfiguration
     Import-DscResource -ModuleName cChoco 
     Import-DscResource -Name MSFT_xRemoteFile -ModuleName xPSDesiredStateConfiguration
 
-   Node "Deploy" {   
+    Node "Deploy" {   
 
         cChocoInstaller installChoco
         { 
@@ -51,6 +52,6 @@ Configuration SonarQubeDeploy
             Name = "SONARQUBE_HOME"
             Value = "$($InstallPath)\sonarqube-$($SonarQubeVersion)"
         }
-
+        
     }
 }
