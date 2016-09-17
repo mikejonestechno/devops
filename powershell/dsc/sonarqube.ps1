@@ -1,5 +1,5 @@
 <# The name of this .ps1 file must match the name of the Configuration in order for Import-AzureRmAutomationDscConfiguration to work #>
-Configuration SonarQubeDeploy
+Configuration SonarQube
 { 
     param(
         [string] $InstallPath = "c:\SonarQube",
