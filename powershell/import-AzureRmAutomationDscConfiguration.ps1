@@ -1,4 +1,4 @@
-# Import a DSC configuration to Azure and compile it so it can be assigned to a node
+# Import a DSC configuration to Azure AND compile it so it can be assigned to a node
 
 param(
     [Parameter(Mandatory=$true)]
@@ -13,13 +13,13 @@ param(
 
 Login-AzureRmAccount
 
-Import-AzureRmAutomationDscConfiguration -SourcePath "dsc\$ConfigName.ps1" -Published –Force `
-  –AutomationAccountName $AutomationAccountName -ResourceGroupName $ResourceGroupName 
+Import-AzureRmAutomationDscConfiguration -SourcePath "dsc\$ConfigName.ps1" -Published -Force `
+  -AutomationAccountName $AutomationAccountName -ResourceGroupName $ResourceGroupName 
 
 $jobData = Start-AzureRmAutomationDscCompilationJob -ConfigurationName $ConfigName `
-  –AutomationAccountName $AutomationAccountName -ResourceGroupName $ResourceGroupName 
+  -AutomationAccountName $AutomationAccountName -ResourceGroupName $ResourceGroupName 
 
 $compilationJobId = $jobData.Id
 
 Get-AzureRmAutomationDscCompilationJob -Id $compilationJobId `
-  –AutomationAccountName $AutomationAccountName -ResourceGroupName $ResourceGroupName 
+  -AutomationAccountName $AutomationAccountName -ResourceGroupName $ResourceGroupName 
