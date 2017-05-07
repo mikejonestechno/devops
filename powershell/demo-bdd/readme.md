@@ -26,6 +26,6 @@ Learn to automate.
 
 [Example BDD API Automated Tests](api)
 
-[Example BDD Infrastructure Tests](api)
+[Example BDD Infrastructure Tests](infra)
 
-[Example BDD Operational tests for a log file script](api)
+[Example BDD Operational tests for a log file script](logs)
